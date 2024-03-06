@@ -1,0 +1,128 @@
+* {
+  margin: 0%;
+  padding: 0%;
+}
+html {
+  font-size: 100%;
+}
+/*body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-image: url("/public/blur\ imgae.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    box-sizing: border-box;
+    height: 100vh;
+  }*/
+.home-container {
+  background-image: url("/public/blur\ imgae.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  box-sizing: border-box;
+  height: 90vh;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Center horizontally */
+  align-items: center;
+  position: relative;
+  text-align: center;
+}
+
+.container {
+  text-align: center;
+  /* Center the text within the container */
+}
+
+.text {
+  max-width: 600px;
+  color: whitesmoke;
+  /* Limit the width of the text */
+}
+#text-h1 {
+  font-size: 40px;
+  padding-top: 80px;
+}
+
+/* Style for the flex container */
+
+.flex-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 50px;
+  height: auto; /* Center align the content horizontally */
+}
+
+.popular h1 {
+  font-size: 40px;
+  text-align: center; /* Adjust the font size as needed */
+  /* Add margin for spacing */
+}
+
+/* Style for the popular courses container */
+.card-container {
+  display: flex;
+  flex-wrap: wrap; /* Allow items to wrap to the next line */
+  justify-content: center;
+  padding: 30px; /* Center align the items horizontally */
+}
+
+/* Style for each card */
+.card-container .MuiCard-root {
+  width: 300px;
+  margin: 0 10px 20px;
+}
+
+/* Style for the flex container1 */
+
+.flex-container1 {
+  display: flex;
+  justify-content: center; /* Center the content horizontally */
+  align-items: flex-start;
+  padding: 20px;
+  height: auto; /* Align items to the top */
+}
+
+/* Style for the choose container */
+.choose-container {
+  display: flex;
+  width: 100%;
+  max-width: 1200px; /* Adjust the max-width as needed */
+}
+
+/* Style for the choose section */
+.choose {
+  flex: 1; /* Take up remaining space */
+  padding: 20px; /* Add padding between choose and review sections */
+}
+
+/* Style for the review section */
+.review {
+  flex: 1; /* Take up remaining space */
+}
+
+/* Style for the headings */
+.icon {
+  margin-right: 10px;
+  color: blue;
+}
+
+/* Style for the paragraphs */
+p {
+  font-size: 16px; /* Adjust the font size as needed */
+  line-height: 1.6;
+  display: flex;
+  align-items: center;
+  /* Adjust the line height as needed */
+}
+.best h2,
+.learn h2,
+.certificate h2 {
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+  padding: 10px;
+}
