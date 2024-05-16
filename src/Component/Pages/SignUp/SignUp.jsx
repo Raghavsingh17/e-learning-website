@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Container, TextField, Button, Typography, Link } from "@mui/material";
 import "./SignUp.css";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const SignUp = () => {
   const [passwordError, setPasswordError] = useState("");
@@ -12,6 +14,8 @@ const SignUp = () => {
     password: "",
     confirmPassword: "",
   });
+
+  const navigate=useNavigate();
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -36,18 +40,41 @@ const SignUp = () => {
     return true;
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     if (!validateEmail() || !validatePassword()) {
       return;
     }
 
-    // Perform signup action here
-    console.log(formData);
-    alert("Sign up successful!");
+    try {
+      const response = await fetch("http://localhost:3800/user/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error("Sign up failed");
+      }
+
+      const data = await response.json();
+      
+      console.log(data);
+      
+      alert("Sign up successful!");
+      navigate("/sign-in");
+      
+    } catch (error) {
+      console.error("Error signing up:", error.message);
+      alert("Error signing up. Please try again later.");
+    }
   };
 
   return (
+    <div className="signup-img">
+      <div className="sign-container">
     <Container maxWidth="xs" className="signup-container">
       <Typography component="h1" variant="h5" className="signup-title">
         Sign up
@@ -119,13 +146,16 @@ const SignUp = () => {
           Sign Up
         </Button>
         <Typography variant="body2" align="center" className="signup-link">
-          Already have an account?{" "}
+          Already have an account?{"\u00A0"} 
+          
           <Link href="/sign-in" variant="body2">
-            Sign in
+              Sign in
           </Link>
         </Typography>
       </form>
-    </Container>
+    </Container>  
+    </div>
+    </div>
   );
 };
 

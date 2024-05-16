@@ -5,25 +5,33 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 import Link from "@mui/material/Link";
 import Box from "@mui/material/Box";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../../context/auth";
+import "./SignIn.css"
+
+
 
 const SignIn = () => {
+
+  
   const [formData, setFormData] = useState({
-    username: "",
+    email: "", 
     password: "",
     rememberMe: false,
   });
+  const [auth,setAuth]=useAuth();
 
+  const navigate=useNavigate();
   const [errors, setErrors] = useState({
-    username: "",
+    email: "", 
     password: "",
   });
 
   const validateForm = () => {
     let valid = true;
-    const newErrors = { username: "", password: "" };
-
-    if (!formData.username) {
-      newErrors.username = "Username is required";
+    const newErrors = { email: "", password: "" }; 
+    if (!formData.email) { 
+      newErrors.email = "Email is required"; 
       valid = false;
     }
 
@@ -39,12 +47,51 @@ const SignIn = () => {
     return valid;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
     if (validateForm()) {
-      // Add your login logic here
-      console.log("Login successful");
+      try {
+      
+        const response = await fetch("http://localhost:3800/user/login", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            
+          },
+          body: JSON.stringify(formData),
+          
+        });
+
+        if (!response.ok) {
+          throw new Error("Login failed");
+        }
+
+        // Assuming the response contains some data like a success message or user details
+        const data = await response.json();
+  
+        // Handle successful login response
+       
+        console.log(data);
+        
+        alert("Login successful!");
+        setAuth({
+          ...auth,
+          user: data.user,
+          token: data.token
+        });
+        localStorage.setItem("token",data.token);
+        localStorage.setItem("id",data.id);
+        localStorage.setItem("role",data.role);
+        if(localStorage.getItem("role")==0){
+          navigate("/");
+        }else{
+        navigate("/admin")
+        }
+      } catch (error) {
+        console.error("Error logging in:", error.message);
+        // Handle error appropriately, e.g., show error message to the user
+        alert("Error logging in. Please try again later.");
+      }
     } else {
       console.log("Login failed");
     }
@@ -59,6 +106,8 @@ const SignIn = () => {
   };
 
   return (
+    <div className="signIn-container">
+      <div className="sign-container1">
     <Box
       component="form"
       onSubmit={handleSubmit}
@@ -75,12 +124,12 @@ const SignIn = () => {
       <h2>Sign In</h2>
       <TextField
         fullWidth
-        label="Username"
-        name="username"
-        value={formData.username}
+        label="Email" 
+        name="email" 
+        value={formData.email} 
         onChange={handleChange}
-        error={Boolean(errors.username)}
-        helperText={errors.username}
+        error={Boolean(errors.email)} 
+        helperText={errors.email} 
         margin="normal"
       />
       <TextField
@@ -117,9 +166,7 @@ const SignIn = () => {
         Login
       </Button>
       <Box sx={{ mt: 2, textAlign: "center" }}>
-        <Link href="#" variant="body2">
-          Forgot Password?
-        </Link>
+        
         <Box mt={1}>
           <Link href="/sign-up" variant="body2">
             Don't have an account? Sign Up
@@ -127,6 +174,8 @@ const SignIn = () => {
         </Box>
       </Box>
     </Box>
+    </div>
+    </div>
   );
 };
 

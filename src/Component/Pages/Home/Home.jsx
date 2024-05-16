@@ -3,7 +3,9 @@ import "./Home.css";
 import Fab from "@mui/material/Fab";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
 import Card from "@mui/material/Card";
+import Divider from "@mui/material/Divider";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
@@ -13,38 +15,78 @@ import Rating from "@mui/material/Rating";
 import ScheduleIcon from "@mui/icons-material/Schedule";
 import BrightnessLowIcon from "@mui/icons-material/BrightnessLow";
 import LocalFireDepartmentIcon from "@mui/icons-material/LocalFireDepartment";
-import Container from "@mui/material/Container";
-import Link from "@mui/material/Link";
-import Grid from "@mui/material/Grid";
-import { Facebook, Instagram, Twitter } from "@mui/icons-material";
-import { Box } from "@mui/material";
+import { Link } from "react-router-dom";
+import ArrowCircleRightOutlinedIcon from "@mui/icons-material/ArrowCircleRightOutlined";
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Carousel } from "react-responsive-carousel";
 
 const Home = () => {
   return (
     <section>
       <div className="home-container">
-        <div className="container">
-          <div className="text">
-            <h1 id="text-h1">Education Opens up the Mind</h1>
-            <br />
-            <p>
-              Welcome to SeekhoOnline! Explore endless opportunities for
-              learning, growth, and success. Start your journey today!
-            </p>
-            <br />
-            <div className="button">
-              <Fab variant="extended" size="medium" sx={{ mr: 1 }}>
-                All Courses
-              </Fab>
+        <div className="container1">
+          <Carousel autoPlay interval={3000} infiniteLoop showThumbs={false}>
+            <div className="carousel-img">
+              <div className="carousel-content">
+                <h1>Education Opens up the Mind</h1>
+                <br />
+                <p>
+                  Welcome to SeekhoOnline! Explore endless opportunities for
+                  learning, growth, and success. Start your journey today!
+                </p>
+                <br />
+                <div className="button">
+                  <Link to="/courses" style={{ textDecoration: "none" }}>
+                    <Fab
+                      variant="extended"
+                      size="medium"
+                      sx={{
+                        mr: 1,
+                        backgroundColor: "white",
+                        color: "black",
+                        "&:hover": {
+                          color: "darkblue",
+                          backgroundColor: "burlywood",
+                        },
+                      }}
+                    >
+                      All Courses
+                      <ArrowCircleRightOutlinedIcon
+                        sx={{ fontSize: "35px", paddingLeft: "10px" }}
+                      />
+                    </Fab>
+                  </Link>
+                </div>
+              </div>
+              <img src="image1.jpg" />
             </div>
-          </div>
+            <div className="carousel-img">
+              <img src="image2.jpg" />
+            </div>
+            <div className="carousel-img">
+              <img src="image4.jpg" />
+            </div>
+            <div className="carousel-img">
+              <img src="image3.jpg" />
+            </div>
+            
+            
+          </Carousel>
         </div>
       </div>
 
       <div className="flex-container">
         <div className="popular-container">
           <div className="popular">
-            <h1>Popular Courses</h1>
+            <h1>
+              Popular Courses
+              <Divider
+                variant="middle"
+                sx={{
+                  backgroundColor: "black",
+                }}
+              />
+            </h1>
           </div>
           <div className="card-container">
             <Card sx={{ maxWidth: 345 }}>
@@ -68,7 +110,7 @@ const Home = () => {
               </CardContent>
               <CardActions>
                 <Button size="small">Share</Button>
-                <Button size="small">Learn More</Button>
+                <Button size="small"> <Link to="/courses" style={{ textDecoration: "none" }}>Learn More</Link></Button>
               </CardActions>
             </Card>
 
@@ -92,7 +134,7 @@ const Home = () => {
               </CardContent>
               <CardActions>
                 <Button size="small">Share</Button>
-                <Button size="small">Learn More</Button>
+                <Button size="small"> <Link to="/courses" style={{ textDecoration: "none" }}>Learn More</Link></Button>
               </CardActions>
             </Card>
 
@@ -108,8 +150,8 @@ const Home = () => {
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
                   Offering courses on SEO, social media marketing, content
-                  marketing, email Marketing Strategies and digital
-                  advertising strategies.
+                  marketing, email Marketing Strategies and digital advertising
+                  strategies.
                 </Typography>
                 <br />
                 <Typography component="legend">Review</Typography>
@@ -117,7 +159,7 @@ const Home = () => {
               </CardContent>
               <CardActions>
                 <Button size="small">Share</Button>
-                <Button size="small">Learn More</Button>
+                <Button size="small"> <Link to="/courses" style={{ textDecoration: "none" }}>Learn More</Link></Button>
               </CardActions>
             </Card>
           </div>
@@ -177,76 +219,6 @@ const Home = () => {
             </div>
           </div>
         </div>
-      </div>
-      <div className="footer-container">
-        <Box
-          component="footer"
-          sx={{
-            backgroundColor: (theme) =>
-              theme.palette.mode === "light"
-                ? theme.palette.grey[200]
-                : theme.palette.grey[800],
-            p: 6,
-          }}
-        >
-          <Container maxWidth="lg">
-            <Grid container spacing={5}>
-              <Grid item xs={12} sm={4}>
-                <Typography variant="h6" color="text.primary" gutterBottom>
-                  About Us
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  Welcome to our e-learning platform, where knowledge meets
-                  innovation. At SeekhoOnline, we are passionate about
-                  revolutionizing education, providing accessible and engaging
-                  learning experiences for students of all ages and backgrounds.
-                </Typography>
-              </Grid>
-              <Grid item xs={12} sm={4}>
-                <Typography variant="h6" color="text.primary" gutterBottom>
-                  Contact Us
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  1st Main Road, Hebbal Kempapura, Bangalore
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  raghavkashyap@gmail.com <br /> sk8651245603@gmail.com
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  Phone: +91 7079483509
-                </Typography>
-              </Grid>
-              <Grid item xs={12} sm={4}>
-                <Typography variant="h6" color="text.primary" gutterBottom>
-                  Follow Us
-                </Typography>
-                <Link href="https://www.facebook.com/" color="inherit">
-                  <Facebook />
-                </Link>
-                <Link
-                  href="https://www.instagram.com/"
-                  color="inherit"
-                  sx={{ pl: 1, pr: 1 }}
-                >
-                  <Instagram />
-                </Link>
-                <Link href="https://www.twitter.com/" color="inherit">
-                  <Twitter />
-                </Link>
-              </Grid>
-            </Grid>
-            <Box mt={5}>
-              <Typography variant="body2" color="text.secondary" align="center">
-                {"Copyright © "}
-                <Link color="inherit" href="https://your-website.com/">
-                  SeekhoOnline
-                </Link>{" "}
-                {new Date().getFullYear()}
-                {"."}
-              </Typography>
-            </Box>
-          </Container>
-        </Box>
       </div>
     </section>
   );

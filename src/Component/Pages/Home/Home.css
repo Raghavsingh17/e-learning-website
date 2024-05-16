@@ -2,50 +2,89 @@
   margin: 0%;
   padding: 0%;
 }
-html {
-  font-size: 100%;
-}
-/*body {
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-image: url("/public/blur\ imgae.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    box-sizing: border-box;
-    height: 100vh;
-  }*/
+
 .home-container {
-  background-image: url("/public/blur\ imgae.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  box-sizing: border-box;
-  height: 90vh;
+  height: fit-content;
+  padding: 15px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center; /* Center horizontally */
   align-items: center;
   position: relative;
   text-align: center;
+  
 }
 
-.container {
+.container1 {
+  max-width: none; /* Override the max-width property */
+  margin: 0 auto;
+}
+
+/* Home.css */
+
+.carousel-img {
+  position: relative;
+  width: 100%;
+}
+
+.carousel-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   text-align: center;
-  /* Center the text within the container */
+  color: white;
+  z-index: 1;
+  padding-top: 200px;
+  text-align: justify;
 }
 
-.text {
-  max-width: 600px;
-  color: whitesmoke;
-  /* Limit the width of the text */
-}
-#text-h1 {
-  font-size: 40px;
-  padding-top: 80px;
+.carousel-content h1 {
+  font-size: 2.5rem;
 }
 
+.carousel-content p {
+  font-size: 1.25rem;
+}
+
+.carousel-content .button {
+  margin-top: 20px;
+}
+
+.image-slider img {
+  width: 100%;
+  height: 550px;
+}
+
+.text-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+  z-index: 1;
+  text-align: justify;
+}
+
+.text-overlay h1 {
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.text-overlay p {
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+/* Slide container styles */
+.slide {
+  position: relative;
+}
+.text-overlay:hover {
+  color: black;
+}
 /* Style for the flex container */
 
 .flex-container {
@@ -53,13 +92,17 @@ html {
   justify-content: center;
   flex-direction: column;
   padding: 50px;
-  height: auto; /* Center align the content horizontally */
+  height: auto;
+  /* Center align the content horizontally */
 }
 
 .popular h1 {
   font-size: 40px;
-  text-align: center; /* Adjust the font size as needed */
-  /* Add margin for spacing */
+  text-align: center;
+}
+.popular h1 .MuiDivider-root {
+  width: 100%;
+  margin: 5px 0;
 }
 
 /* Style for the popular courses container */
@@ -67,14 +110,25 @@ html {
   display: flex;
   flex-wrap: wrap; /* Allow items to wrap to the next line */
   justify-content: center;
-  padding: 30px; /* Center align the items horizontally */
+  padding: 50px;
+  text-align: justify; /* Center align the items horizontally */
+}
+.carousel .thumbs-wrapper {
+  display: none;
 }
 
+.carousel-img img {
+  width: 100%; /* Adjust width to take up full width */
+  height: 580px; /* Adjust height as needed */
+  object-fit: cover; /* Ensures the image covers the entire slide */
+}
 /* Style for each card */
 .card-container .MuiCard-root {
   width: 300px;
   margin: 0 10px 20px;
+  flex: 1 1 300px;
 }
+
 
 /* Style for the flex container1 */
 
@@ -83,7 +137,8 @@ html {
   justify-content: center; /* Center the content horizontally */
   align-items: flex-start;
   padding: 20px;
-  height: auto; /* Align items to the top */
+  height: auto;
+  text-align: justify; /* Align items to the top */
 }
 
 /* Style for the choose container */
@@ -96,7 +151,8 @@ html {
 /* Style for the choose section */
 .choose {
   flex: 1; /* Take up remaining space */
-  padding: 20px; /* Add padding between choose and review sections */
+  padding: 20px;
+  font-size: 23px; /* Add padding between choose and review sections */
 }
 
 /* Style for the review section */
@@ -108,6 +164,7 @@ html {
 .icon {
   margin-right: 10px;
   color: blue;
+  vertical-align: middle;
 }
 
 /* Style for the paragraphs */
